@@ -1,6 +1,8 @@
 # 2025-2026-NEW_SEASON <br>
 Where we will store our code for the 2025 - 2026 season. And also where we shall win our first championships! Heck yeah! <br>
 
+## Important Info <br>
+**WE WILL ONLY BE DOING WORK IN THE *TEAMCODE* FOLDER DIRECTLY UNDER THE BRANCH! DON'T TOUCH ANYTHING ELSE!!!** <br>
 ## Member Computer #s <br>
 **Note: Members should have at least 2 computers, in case one is out of battery or broken** <br>
 _Name (Github Name) - Computers_ <br>

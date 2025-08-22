@@ -3,6 +3,13 @@ Where we will store our code for the 2025 - 2026 season. And also where we shall
 
 ## Important Info <br>
 **WE WILL ONLY BE DOING WORK IN THE *TEAMCODE* FOLDER DIRECTLY UNDER THE BRANCH! DON'T TOUCH ANYTHING ELSE!!!** <br>
+
+## Team Info <br>
+Leads: Benny and Ruthvik 
+
+Team 1: ??? <br>
+Team 2: ??? <br>
+
 ## Member Computer #s <br>
 **Note: Members should have at least 2 computers, in case one is out of battery or broken** <br>
 _Name (Github Name) - Computers_ <br>
@@ -12,11 +19,6 @@ Ruthvik (Betra/Garuda) - 25 / 32 <br>
 Benny (grimaceshake) - 26 <br>
 Aiden (AjDjDuarte) - 17 <br>
 Victor (VickyCheese2010) - Personal / 6 <br>
-
-Leads: Benny and Ruthvik 
-
-Team 1: ???
-Team 2: ???
 
 ## Contact Info
 **Please put your preferred way(s) of contact (Phone, Discord, Insta, etc.) in order of most->least preferred** <br>

@@ -1,7 +1,7 @@
 #2025-2026-NEW_SEASON <br>
 Where we will store our code for the 2025 - 2026 season. And also where we shall win our first championships! Heck yeah! <br>
 
-##Member Computer #s
+##Member Computer #s <br>
 **Note: Members should have at least 2 computers, in case one is out of battery or broken** <br>
 _Name (Github Name) - Computers_ <br>
 Nav (lmaoNebula) - "20" <br>

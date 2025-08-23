@@ -19,7 +19,7 @@ Ruthvik (Betra/Garuda) - 25 / 32 <br>
 Benny (grimaceshake) - 26 <br>
 Aiden (AjDjDuarte) - 17 <br>
 Victor (VickyCheese2010) - Personal / 6 <br>
-This is a commit test, super poggies <br>
+This is a commit test, super poggies, also the horrors <br>
 
 ## Contact Info
 **Please put your preferred way(s) of contact (Phone, Discord, Insta, etc.) in order of most->least preferred** <br>

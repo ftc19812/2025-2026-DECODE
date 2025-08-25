@@ -15,7 +15,7 @@ Team 2: ??? <br>
 _Name (Github Name) - Computers_ <br>
 Nav (lmaoNebula) - "20" <br>
 Justin (JustinBustin) - 33 <br>
-Ruthvik (Betra/Garuda) - 25 / 32 <br>
+Ruthvik (Betra/Garuda) - 8 <br>
 Benny (grimaceshake) - 26 <br>
 Aiden (AjDjDuarte) - 17 <br>
 Victor (VickyCheese2010) - Personal / 6 <br>

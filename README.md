@@ -15,7 +15,7 @@ Team 2: ??? <br>
 _Name (Github Name) - Computers_ <br>
 Nav (lmaoNebula) - "20" <br>
 Justin (JustinBustin) - 33 <br>
-Ruthvik (Betra/Garuda) - 25 / 32 <br>
+Ruthvik (Betra/Garuda) - 8 <br>
 Benny (grimaceshake) - 26 <br>
 Aiden (AjDjDuarte) - 17 <br>
 Victor (VickyCheese2010) - Personal / 6 <br>
@@ -24,3 +24,4 @@ This is a commit test, super poggies, also the horrors <br>
 ## Contact Info
 **Please put your preferred way(s) of contact (Phone, Discord, Insta, etc.) in order of most->least preferred** <br>
 Benny - Discord: bung1r, Email: 1077463 <br>
+Ruthvik - Discord: garuda4317, Email: 1076105 <br>

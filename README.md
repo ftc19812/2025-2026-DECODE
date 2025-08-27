@@ -20,10 +20,11 @@ Ruthvik (Betra/Garuda) - 8 <br>
 Benny (grimaceshake) - 26 <br>
 Aiden (AjDjDuarte) - 17 <br>
 Victor (VickyCheese2010) - Personal / 6 <br>
-This is a commit test, super poggies, also the horrors <br>
+This is a commit test <br>
 
 ## Contact Info
 **Please put your preferred way(s) of contact (Phone, Discord, Insta, etc.) in order of most->least preferred** <br>
 Benny - Discord: bung1r, Email: 1077463 <br>
 Ruthvik - Discord: garuda4317, Email: 1076105 <br>
-Justin - Discord: justin_busin, Email: 1077404 <br>
+Justin - Discord: justin_bustin, Email: 1077404 <br>
+

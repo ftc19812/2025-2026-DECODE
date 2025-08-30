@@ -8,8 +8,8 @@ Refer to the docs: https://docs.google.com/document/d/1GjW2pdXWqgcRCNO-rm_lqsSRa
 ## Team Info <br>
 Leads: Benny and Ruthvik 
 
-Team 1: ??? <br>
-Team 2: ??? <br>
+Team 1: Benny <br>
+Team 2: Ruthvik <br>
 
 ## Member Computer #s <br>
 **Note: Members should have at least 2 computers, in case one is out of battery or broken** <br>

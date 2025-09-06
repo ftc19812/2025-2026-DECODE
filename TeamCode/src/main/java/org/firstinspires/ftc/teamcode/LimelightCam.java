@@ -16,6 +16,7 @@ I don't know what I'm doing, if it wasn't obvious already.
 And yes, I did make all of this by myself with no help whatsoever.
 You can tell by the terrible code scattered across this. Might as well be considered
 a war crime to be honest.
+
 */
 public final class LimelightCam {
 
@@ -110,3 +111,36 @@ public final class LimelightCam {
         }
     }
 }
+
+/*
+Fly, broken wings
+I know you are still with me
+All I need is a nudge to get me started
+Fly, broken wings
+To somewhere we can be free
+Closer to our ideal
+Teary-eyed
+Once gentle soul
+I watched as you rotted away
+The mirror says that I still remember hope
+You're doing what you love
+Isn't that enough? Isn't that enough?
+A genius, perfect job
+Isn't that enough? Isn't that enough?
+Again and again
+You locked me down, I locked me down
+We staked me to the ground
+The soil gave me warmth
+Please die, little dreams
+Kill the camellias in me
+Wouldn't it be easier to give in?
+Why are these hands chasing dreams out of my reach?
+Is my thirst for normalcy odd?
+Fly, perfect wings
+Where have you been hiding?
+Bring me to the mind that got us started
+Fly, perfect wings
+Show them who I can be
+For the one last time, if you will
+That's all
+*/

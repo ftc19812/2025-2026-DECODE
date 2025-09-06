@@ -4,8 +4,8 @@ Where we will store our code for the 2025 - 2026 season. And also where we shall
 ## Important Info <br>
 **WE WILL ONLY BE DOING WORK IN THE *TEAMCODE* FOLDER DIRECTLY UNDER THE BRANCH! DON'T TOUCH ANYTHING ELSE!!!** <br>
 Refer to the docs: https://docs.google.com/document/d/1GjW2pdXWqgcRCNO-rm_lqsSRax9PzOhDgudvDf_lM-0/edit?tab=t.0 <br>
-Video for this season's game to give you a refresher: https://youtu.be/tRlcAwgMx5Q?si=cM-7J3wdMtNaNfzC
-Game Manual: https://ftc-resources.firstinspires.org/ftc/game/manual
+Video for this season's game to give you a refresher: https://youtu.be/tRlcAwgMx5Q?si=cM-7J3wdMtNaNfzC <br>
+Game Manual: https://ftc-resources.firstinspires.org/ftc/game/manual <br>
 
 ## Team Info <br>
 Leads: Benny and Ruthvik 

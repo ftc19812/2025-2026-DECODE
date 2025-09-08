@@ -28,6 +28,6 @@ This is a commit test <br>
 **Please put your preferred way(s) of contact (Phone, Discord, Insta, etc.) in order of most->least preferred** <br>
 Benny - Discord: bung1r, Email: 1077463 <br>
 Ruthvik - Discord: garuda4317, Email: 1076105 <br>
+Victor - Discord: vickycheese, Email: 1077381 <br>
 Justin - Discord: justin_bustin, Email: 1077404 <br>
 Aidan D. - Discord: DwardeeTouchGrass, Email: 1071032 <br>
-

@@ -22,7 +22,7 @@ public class ForwardPushTest extends LinearOpMode {
         telemetry.update();
         GoBildaPinpointDriver driver = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
         driver.resetPosAndIMU();
-        
+
         sleep(4000);
         driver.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
         driver.setOffsets(-3.0, 0, DistanceUnit.INCH);
@@ -35,6 +35,9 @@ public class ForwardPushTest extends LinearOpMode {
         waitForStart();
 
 
+        int offsetX = 0;
+        int offsetY = 0;
+
 
         if (isStopRequested()) return;
 
@@ -42,17 +45,28 @@ public class ForwardPushTest extends LinearOpMode {
         int num = 1;
         while (opModeIsActive()) {
             driver.update();
+            if (num == 1) {
+                offsetX = driver.getEncoderX() * -1;
+                offsetY = driver.getEncoderY() * -1;
+            }
+            driver.resetPosAndIMU();
             num+=1;
             int YEncoders = driver.getEncoderY();
             int XEncoders = driver.getEncoderX();
 
-
-            telemetry.addData("Parallel Ticks (X)", XEncoders);
-            telemetry.addData("Perpendicular Ticks (Y)", YEncoders);
+            int TrueYEncoders = YEncoders + offsetY;
+            int TrueXEncoders = XEncoders + offsetX;
+            telemetry.addData("X Offset", offsetX);
+            telemetry.addData("Y Offset", offsetY);
+            telemetry.addData("Parallel Ticks (X)", TrueXEncoders);
+            telemetry.addData("Perpendicular Ticks (Y)", TrueYEncoders);
             telemetry.addData("test loop", num);
             telemetry.update();
 
             driver.update();
+
+            //12205 per 24 inch
+            // 0.00196640721 inch per tick
         }
     }
 }

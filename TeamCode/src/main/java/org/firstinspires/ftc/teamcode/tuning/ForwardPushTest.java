@@ -19,15 +19,17 @@ public class ForwardPushTest extends LinearOpMode {
         // CHANGE THESE NAMES to match your config
 
         telemetry.addLine("Push the robot straight forward ~24 inches, then stop.");
-
+        telemetry.update();
         GoBildaPinpointDriver driver = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
         driver.resetPosAndIMU();
+        
+        sleep(4000);
         driver.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        driver.setOffsets(-60, 0, DistanceUnit.MM);
+        driver.setOffsets(-3.0, 0, DistanceUnit.INCH);
         driver.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD,
                 GoBildaPinpointDriver.EncoderDirection.FORWARD);
         driver.setPosition(new Pose2D(DistanceUnit.MM, 0,0, AngleUnit.DEGREES, 0));
-        driver.resetPosAndIMU();
+
         telemetry.addLine("Help help me");
         telemetry.update();
         waitForStart();

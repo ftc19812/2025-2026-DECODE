@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
@@ -18,17 +18,29 @@ You can tell by the terrible code scattered across this. Might as well be consid
 a war crime to be honest.
 
 */
-public final class LimelightCam {
+public final class LimelightManager {
 
-    public Limelight3A hardware;
-    public Telemetry telemetry;
+    private Limelight3A hardware;
+    private Telemetry telemetry;
 
     // Initializes the variables necessary for the lime light camera.
-    public LimelightCam(Limelight3A hardware, Telemetry telemetry){
+
+    public LimelightManager(Limelight3A hardware, Telemetry telemetry){
         this.hardware = hardware;
         this.telemetry = telemetry;
     }
+    public void setPipeline(int num) {
+        hardware.pipelineSwitch(num);
+    }
+    public LLResult getLatestResults() {
+        return hardware.getLatestResult();
+    }
+    public LLStatus getStatus() {
+        return hardware.getStatus();
+    }
+    public void e() {
 
+    }
     public void telemetryStatus(LLStatus status) {
         telemetry.addData("Name", "%s",
                 status.getName());
@@ -80,14 +92,14 @@ public final class LimelightCam {
         }
     }
     // This is what we'll be using (Fiducials are April Tags... apparently...)
-    public void telemetryFiducial(LLResult result) {
+    public void telemetryAprilTags(LLResult result) {
         if (result.isValid()) {
             List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
             for (LLResultTypes.FiducialResult fr : fiducialResults) {
-                telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
+                telemetry.addData("April Tags", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
             }
         } else {
-            telemetry.addData("Fiducial", "not found");
+            telemetry.addData("April Tags", "not found");
         }
     }
     public void telemetryColor(LLResult result) {
@@ -110,6 +122,7 @@ public final class LimelightCam {
             telemetry.addData("Detector", "not found");
         }
     }
+
 }
 
 /*

@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;/*
+package org.firstinspires.ftc.teamcode.testfiles;/*
 Copyright (c) 2024 Limelight Vision
 
 All rights reserved.
@@ -40,6 +40,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
+import org.firstinspires.ftc.teamcode.subsystems.LimelightManager;
 
 import java.util.List;
 
@@ -70,14 +71,14 @@ import java.util.List;
 public class LimelightSample extends LinearOpMode {
 
     private Limelight3A limelight;
-    private LimelightCam limelightCam;
+    private LimelightManager limelightManager;
 
     @Override
     public void runOpMode() throws InterruptedException
     {
 
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
-        limelightCam = new LimelightCam(limelight, telemetry);
+        limelightManager = new LimelightManager(limelight, telemetry);
         telemetry.setMsTransmissionInterval(11);
 
         limelight.pipelineSwitch(0);
@@ -93,7 +94,7 @@ public class LimelightSample extends LinearOpMode {
 
         while (opModeIsActive()) {
             LLStatus status = limelight.getStatus();
-            limelightCam.telemetryStatus(status);
+            limelightManager.telemetryStatus(status);
 
             LLResult result = limelight.getLatestResult();
             if (result.isValid()) {
@@ -102,9 +103,9 @@ public class LimelightSample extends LinearOpMode {
                 double captureLatency = result.getCaptureLatency();
                 double targetingLatency = result.getTargetingLatency();
                 double parseLatency = result.getParseLatency();
-                limelightCam.telemetryLatency(result);
+                limelightManager.telemetryLatency(result);
 
-                limelightCam.telemetryStats(result);
+                limelightManager.telemetryStats(result);
 
                 telemetry.addData("Botpose", botpose.toString());
 

@@ -37,6 +37,7 @@ import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
@@ -66,81 +67,60 @@ import java.util.List;
  *   and the ip address the Limelight device assigned the Control Hub and which is displayed in small text
  *   below the name of the Limelight on the top level configuration screen.
  */
-@TeleOp(name = "Limelight Sample", group = "Sensor")
-@Disabled
-public class LimelightSample extends LinearOpMode {
+@TeleOp(name = "Limelight Test", group = "Sensor")
+public class LimelightSample extends OpMode {
 
-    private Limelight3A limelight;
-    private LimelightManager limelightManager;
+    private LimelightManager limelight;
 
     @Override
-    public void runOpMode() throws InterruptedException
-    {
-
-        limelight = hardwareMap.get(Limelight3A.class, "limelight");
-        limelightManager = new LimelightManager(limelight, telemetry);
+    public void init() {
+        limelight = new LimelightManager(hardwareMap.get(Limelight3A.class, "limelight"), telemetry);
         telemetry.setMsTransmissionInterval(11);
-
-        limelight.pipelineSwitch(0);
-
-        /*
-         * Starts polling for data.  If you neglect to call start(), getLatestResult() will return null.
-         */
-        limelight.start();
+        // i think 8 is April Tags? We won't really know until we check, anyway
+        limelight.pipelineSwitch(8);
 
         telemetry.addData(">", "Robot Ready.  Press Play.");
         telemetry.update();
-        waitForStart();
+    }
+    @Override
+    public void start() {
+        // put this in init during competition so auto doesn't die
+        limelight.start();
+    }
+    @Override
+    public void loop() {
+        LLResult result = limelight.getLatestResult();
+        LLStatus status = limelight.getStatus();
+//        limelight.telemetryStatus(status);
 
-        while (opModeIsActive()) {
-            LLStatus status = limelight.getStatus();
-            limelightManager.telemetryStatus(status);
-
-            LLResult result = limelight.getLatestResult();
-            if (result.isValid()) {
-                // Access general information
-                Pose3D botpose = result.getBotpose();
-                double captureLatency = result.getCaptureLatency();
-                double targetingLatency = result.getTargetingLatency();
-                double parseLatency = result.getParseLatency();
-                limelightManager.telemetryLatency(result);
-
-                limelightManager.telemetryStats(result);
-
-                telemetry.addData("Botpose", botpose.toString());
-
-                // Access barcode results
-
-                // Access classifier results
-                List<LLResultTypes.ClassifierResult> classifierResults = result.getClassifierResults();
-                for (LLResultTypes.ClassifierResult cr : classifierResults) {
-                    telemetry.addData("Classifier", "Class: %s, Confidence: %.2f", cr.getClassName(), cr.getConfidence());
-                }
-
-                // Access detector results
-                List<LLResultTypes.DetectorResult> detectorResults = result.getDetectorResults();
-                for (LLResultTypes.DetectorResult dr : detectorResults) {
-                    telemetry.addData("Detector", "Class: %s, Area: %.2f", dr.getClassName(), dr.getTargetArea());
-                }
-
-                // Access fiducial results
-                // limelightCam.telemetryFiducial(result);
-                List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
-                for (LLResultTypes.FiducialResult fr : fiducialResults) {
-                    telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
-                }
-
-                // Access color results
-                List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
-                for (LLResultTypes.ColorResult cr : colorResults) {
-                    telemetry.addData("Color", "X: %.2f, Y: %.2f", cr.getTargetXDegrees(), cr.getTargetYDegrees());
-                }
+        if (result.isValid()) {
+            // Access general information
+            int AprilTagID = limelight.getAprilTagID(result);
+            if (AprilTagID == 404) {
+                telemetry.addData("April Tags", "returned nothing");
+            } else if (AprilTagID == 20) {
+                // do whatever 20 does
+            } else if (AprilTagID == 21) {
+                // do whatever 21 does
+            } else if (AprilTagID == 22) {
+                // do whatever 22 does
+            } else if (AprilTagID == 23) {
+                // do whatever 23 does
+            } else if (AprilTagID == 24) {
+                // do whatever 24 does
+            } else if (AprilTagID == 25) {
+                // do whatever 25 does
             } else {
-                telemetry.addData("Limelight", "No data available");
+                // if anything else, lol
             }
 
-            telemetry.update();
+        } else {
+            telemetry.addData("Limelight", "No data available");
         }
+    }
+    @Override
+    public void stop() {
         limelight.stop();
     }
+
 }

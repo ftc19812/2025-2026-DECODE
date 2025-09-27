@@ -1,11 +1,15 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 
 import java.util.List;
 
@@ -29,18 +33,75 @@ public final class LimelightManager {
         this.hardware = hardware;
         this.telemetry = telemetry;
     }
-    public void setPipeline(int num) {
+
+    /** starts the detection process. Place this in 'init' or 'start', //
+     * During comp, put it in init. Otherwise, put it in start. */
+    public void start() {
+        hardware.start();
+    }
+
+    /** stops the detection process. Place this in 'stop' */
+    public void stop() {
+        hardware.stop();
+    }
+    // check your associated pipeline by connecting to the limelight's ip address
+    public void pipelineSwitch(int num) {
         hardware.pipelineSwitch(num);
     }
-    public LLResult getLatestResults() {
+
+    public Pose3D getBotpose(LLResult result) {
+        return result.getBotpose();
+    }
+
+    public double getCaptureLatency(LLResult result) {
+        return result.getCaptureLatency();
+    }
+    public double getTargetingLatency(LLResult result) {
+        return result.getTargetingLatency();
+    }
+    public double parseLatency(LLResult result) {
+        return result.getParseLatency();
+    }
+    // gets the latest result. This is a prerequisite to most other methods here
+    public LLResult getLatestResult() {
         return hardware.getLatestResult();
     }
+
+    // gets the latest status. This is a prerequisite to some other methods here
     public LLStatus getStatus() {
         return hardware.getStatus();
     }
-    public void e() {
 
+    @Nullable
+    public LLResultTypes.FiducialResult getLargestAprilTagResult(LLResult result) {
+        List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
+
+        double biggestArea = 0;
+        LLResultTypes.FiducialResult fiducialResult = null;
+        for (LLResultTypes.FiducialResult fr : fiducialResults) {
+            if (fr.getTargetArea() > biggestArea) {
+                biggestArea = fr.getTargetArea();
+                fiducialResult = fr;
+            }
+        }
+
+        if (fiducialResult != null) {
+            return fiducialResult;
+        }
+
+        return null;
     }
+
+    // if this method returns 404, that means it's not working.
+    public int getAprilTagID(LLResult result) {
+        LLResultTypes.FiducialResult fiducialResult = getLargestAprilTagResult(result);
+        if (fiducialResult != null) {
+            return fiducialResult.getFiducialId();
+        }
+        //
+        return 404;
+    }
+
     public void telemetryStatus(LLStatus status) {
         telemetry.addData("Name", "%s",
                 status.getName());
@@ -49,6 +110,15 @@ public final class LimelightManager {
         telemetry.addData("Pipeline", "Index: %d, Type: %s",
                 status.getPipelineIndex(), status.getPipelineType());
     }
+
+    // gets the info of the scanned april tags if applicable. pairs well with telemetry version
+    public List<LLResultTypes.FiducialResult> getAprilTagInfo(LLResult result) {
+        return result.getFiducialResults();
+    }
+
+    // below are the telemetry methods, purely for easy telemetry without cluttering code
+
+    // telemetry to print out various stats
     public void telemetryStats(LLResult result) {
         if (result.isValid()) {
             telemetry.addData("tx", result.getTx());
@@ -59,6 +129,8 @@ public final class LimelightManager {
             telemetry.addData("Stats", "not found");
         }
     }
+
+    // telemetry to print out barcodes if applicable
     public void telemetryBarcode(LLResult result) {
         if (result.isValid()) {
             List<LLResultTypes.BarcodeResult> barcodeResults = result.getBarcodeResults();
@@ -81,6 +153,8 @@ public final class LimelightManager {
             telemetry.addData("Latency", "not found");
         }
     }
+
+    // telemetry to print out classifiers if applicable
     public void telemetryClassifier(LLResult result) {
         if (result.isValid()) {
             List<LLResultTypes.ClassifierResult> classifierResults = result.getClassifierResults();
@@ -91,7 +165,8 @@ public final class LimelightManager {
             telemetry.addData("Classifer", "not found");
         }
     }
-    // This is what we'll be using (Fiducials are April Tags... apparently...)
+
+    // telemetry to print out april tags. Do note that these are technically 'fudicial'
     public void telemetryAprilTags(LLResult result) {
         if (result.isValid()) {
             List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();

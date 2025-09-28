@@ -1,19 +1,19 @@
-package org.firstinspires.ftc.teamcode.tuning;
+package org.firstinspires.ftc.teamcode.teamfiles.Team1.RRFiles.tuning;
 
 import com.acmerobotics.roadrunner.Pose2d;
 import com.acmerobotics.roadrunner.Vector2d;
 import com.acmerobotics.roadrunner.ftc.Actions;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.MecanumDrive;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.TankDrive;
+import org.firstinspires.ftc.teamcode.teamfiles.Team1.RRFiles.drivelocalizers.TankDrive;
+import org.firstinspires.ftc.teamcode.teamfiles.Team1.RRFiles.drivelocalizers.Team1MecanumDrive;
 
 public final class SplineTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         Pose2d beginPose = new Pose2d(0, 0, 0);
-        if (TuningOpModes.DRIVE_CLASS.equals(MecanumDrive.class)) {
-            MecanumDrive drive = new MecanumDrive(hardwareMap, beginPose);
+        if (TuningOpModes.DRIVE_CLASS.equals(Team1MecanumDrive.class)) {
+            Team1MecanumDrive drive = new Team1MecanumDrive(hardwareMap, beginPose);
 
             waitForStart();
 

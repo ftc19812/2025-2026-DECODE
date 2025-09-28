@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.tuning;
+package org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.tuning;
 
 import androidx.annotation.NonNull;
 
@@ -40,12 +40,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.robotcore.external.navigation.UnnormalizedAngleUnit;
 import org.firstinspires.ftc.robotcore.internal.opmode.OpModeMeta;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.MecanumDrive;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.OTOSLocalizer;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.PinpointLocalizer;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.TankDrive;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.ThreeDeadWheelLocalizer;
-import org.firstinspires.ftc.teamcode.roadrunnerstuff.TwoDeadWheelLocalizer;
+import org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.drivelocalizers.Team3MecanumDrive;
+import org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.drivelocalizers.OTOSLocalizer;
+import org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.drivelocalizers.Team3PinpointLocalizer;
+import org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.drivelocalizers.TankDrive;
+import org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.drivelocalizers.ThreeDeadWheelLocalizer;
+import org.firstinspires.ftc.teamcode.teamfiles.Team3.RRFiles.drivelocalizers.TwoDeadWheelLocalizer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,7 +53,7 @@ import java.util.List;
 
 public final class TuningOpModes {
     // TODO: change this to TankDrive.class if you're using tank
-    public static final Class<?> DRIVE_CLASS = MecanumDrive.class;
+    public static final Class<?> DRIVE_CLASS = Team3MecanumDrive.class;
 
     public static final String GROUP = "quickstart";
     public static final boolean DISABLED = false;
@@ -68,7 +68,7 @@ public final class TuningOpModes {
                 .build();
     }
 
-    private static PinpointView makePinpointView(PinpointLocalizer pl) {
+    private static PinpointView makePinpointView(Team3PinpointLocalizer pl) {
         return new PinpointView() {
             GoBildaPinpointDriver.EncoderDirection parDirection = pl.initialParDirection;
             GoBildaPinpointDriver.EncoderDirection perpDirection = pl.initialPerpDirection;
@@ -128,16 +128,16 @@ public final class TuningOpModes {
         if (DISABLED) return;
 
         DriveViewFactory dvf;
-        if (DRIVE_CLASS.equals(MecanumDrive.class)) {
+        if (DRIVE_CLASS.equals(Team3MecanumDrive.class)) {
             dvf = hardwareMap -> {
-                MecanumDrive md = new MecanumDrive(hardwareMap, new Pose2d(0, 0, 0));
+                Team3MecanumDrive md = new Team3MecanumDrive(hardwareMap, new Pose2d(0, 0, 0));
                 LazyImu lazyImu = md.lazyImu;
 
                 List<EncoderGroup> encoderGroups = new ArrayList<>();
                 List<EncoderRef> leftEncs = new ArrayList<>(), rightEncs = new ArrayList<>();
                 List<EncoderRef> parEncs = new ArrayList<>(), perpEncs = new ArrayList<>();
-                if (md.localizer instanceof MecanumDrive.DriveLocalizer) {
-                    MecanumDrive.DriveLocalizer dl = (MecanumDrive.DriveLocalizer) md.localizer;
+                if (md.localizer instanceof Team3MecanumDrive.DriveLocalizer) {
+                    Team3MecanumDrive.DriveLocalizer dl = (Team3MecanumDrive.DriveLocalizer) md.localizer;
                     encoderGroups.add(new LynxQuadratureEncoderGroup(
                             hardwareMap.getAll(LynxModule.class),
                             Arrays.asList(dl.leftFront, dl.leftBack, dl.rightFront, dl.rightBack)
@@ -169,8 +169,8 @@ public final class TuningOpModes {
                     parEncs.add(new EncoderRef(0, 0));
                     perpEncs.add(new EncoderRef(0, 1));
                     lazyImu = new OTOSIMU(ol.otos);
-                }  else if (md.localizer instanceof PinpointLocalizer) {
-                    PinpointView pv = makePinpointView((PinpointLocalizer) md.localizer);
+                }  else if (md.localizer instanceof Team3PinpointLocalizer) {
+                    PinpointView pv = makePinpointView((Team3PinpointLocalizer) md.localizer);
                     encoderGroups.add(new PinpointEncoderGroup(pv));
                     parEncs.add(new EncoderRef(0, 0));
                     perpEncs.add(new EncoderRef(0, 1));
@@ -181,10 +181,10 @@ public final class TuningOpModes {
 
                 return new DriveView(
                     DriveType.MECANUM,
-                        MecanumDrive.PARAMS.inPerTick,
-                        MecanumDrive.PARAMS.maxWheelVel,
-                        MecanumDrive.PARAMS.minProfileAccel,
-                        MecanumDrive.PARAMS.maxProfileAccel,
+                        Team3MecanumDrive.PARAMS.inPerTick,
+                        Team3MecanumDrive.PARAMS.maxWheelVel,
+                        Team3MecanumDrive.PARAMS.minProfileAccel,
+                        Team3MecanumDrive.PARAMS.maxProfileAccel,
                         encoderGroups,
                         Arrays.asList(
                                 md.leftFront,
@@ -200,9 +200,9 @@ public final class TuningOpModes {
                         perpEncs,
                         lazyImu,
                         md.voltageSensor,
-                        () -> new MotorFeedforward(MecanumDrive.PARAMS.kS,
-                                MecanumDrive.PARAMS.kV / MecanumDrive.PARAMS.inPerTick,
-                                MecanumDrive.PARAMS.kA / MecanumDrive.PARAMS.inPerTick),
+                        () -> new MotorFeedforward(Team3MecanumDrive.PARAMS.kS,
+                                Team3MecanumDrive.PARAMS.kV / Team3MecanumDrive.PARAMS.inPerTick,
+                                Team3MecanumDrive.PARAMS.kA / Team3MecanumDrive.PARAMS.inPerTick),
                         0
                 );
             };
@@ -246,8 +246,8 @@ public final class TuningOpModes {
                     ));
                     parEncs.add(new EncoderRef(0, 0));
                     perpEncs.add(new EncoderRef(0, 1));
-                }  else if (td.localizer instanceof PinpointLocalizer) {
-                    PinpointView pv = makePinpointView((PinpointLocalizer) td.localizer);
+                }  else if (td.localizer instanceof Team3PinpointLocalizer) {
+                    PinpointView pv = makePinpointView((Team3PinpointLocalizer) td.localizer);
                     encoderGroups.add(new PinpointEncoderGroup(pv));
                     parEncs.add(new EncoderRef(0, 0));
                     perpEncs.add(new EncoderRef(0, 1));
